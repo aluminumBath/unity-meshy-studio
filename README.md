@@ -72,7 +72,24 @@ second paid step), then rig and animate if it's a character:
 ```
 $ python tools/meshy_client.py text-to-3d-refine \
     --preview-task-id 019f568e-... --confirm-spend
+
+$ python tools/meshy_client.py rig --input-task-id TASK_ID \
+    --height-meters 1.8 --confirm-spend
+$ python tools/meshy_client.py animate --rig-task-id RIG_TASK_ID \
+    --action-id 0 --confirm-spend
 ```
+
+Rigging returns the character plus free walking and running animations;
+`animate` applies any action from [Meshy's animation
+library](https://docs.meshy.ai/en/api/animation-library) by ID. One thing to
+know: rigging runs pose estimation on the mesh, and it will reject models
+without clear limb separation ("Pose estimation failed"). Generating
+characters in a T-pose or A-pose avoids this — the bulky golem above fails,
+a T-posed adventurer rigs fine.
+
+There's also `image-to-3d` (pass `--image` a URL, data URI, or local
+.jpg/.png; repeat it for multi-image up to 4), `remesh` for topology and
+polycount changes, and `retexture` for restyling a model's surface.
 
 ### The credit rule
 
@@ -112,9 +129,11 @@ so a re-download never nukes your components.
   it edits them.
 - **Meshy's MCP server** declared in `.mcp.json` (reads `MESHY_API_KEY` from
   your environment; the key is never written into config).
-- **`tools/meshy_client.py`** — a small REST client used as a fallback when
-  the MCP server isn't available. Covers balance, text-to-3D preview/refine,
-  task polling, and downloads.
+- **`tools/meshy_client.py`** — a REST client used as a fallback when the MCP
+  server isn't available. Covers balance, text-to-3D preview/refine,
+  image-to-3D and multi-image (URLs, data URIs, or local files), remesh,
+  retexture, rigging, animation (with FPS post-processing), task polling, and
+  downloads. Every operation is tested against the live API.
 
 ## Troubleshooting
 

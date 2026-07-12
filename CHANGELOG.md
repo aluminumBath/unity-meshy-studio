@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 — 2026-07-12
+
+- The fallback REST client now covers the full Meshy pipeline: `image-to-3d`
+  (single or multi-image via URL, data URI, or local file), `remesh`,
+  `retexture`, `rig`, and `animate` (with optional FPS post-processing), all
+  behind the same `--confirm-spend` gate and tested against the live API.
+- Downloads handle nested rigging/animation result payloads and skip the
+  empty URL strings Meshy returns for formats a task did not produce.
+- API errors now include Meshy's response detail (for example rigging's
+  "Pose estimation failed") instead of a bare HTTP status.
+
 ## 1.1.4 — 2026-07-12
 
 - Rewrote the README around the marketplace install, with a real example run

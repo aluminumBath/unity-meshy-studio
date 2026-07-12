@@ -1,7 +1,7 @@
 {
   "name": "unity-meshy-studio",
   "displayName": "Unity Meshy Studio",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Unity development skills plus a guarded Meshy text-to-3D pipeline: generate, import, and validate game-ready assets without leaking keys or burning credits by accident.",
   "author": {
     "name": "Steele Schauer",
