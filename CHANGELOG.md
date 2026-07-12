@@ -1,0 +1,15 @@
+# Changelog
+
+## 1.1.0 — 2026-07-12
+
+- Split the plugin into 13 focused skills.
+- Added four specialist review agents.
+- Added non-mutating Unity edit reminders through a plugin hook.
+- Added scene, texture, and generated-prefab health scanners.
+- Added release validation, contribution guidance, and publishing checklist.
+- Added marketplace packaging.
+- Preserved explicit Meshy credit approval and credential safeguards.
+
+## 1.0.0 — 2026-07-12
+
+- Initial public standalone skill and Claude Code plugin release.

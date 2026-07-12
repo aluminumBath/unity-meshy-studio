@@ -1,0 +1,31 @@
+{
+  "name": "unity-meshy-studio",
+  "displayName": "Unity Meshy Studio",
+  "version": "1.1.0",
+  "description": "Production-oriented Unity engineering, visual polish, diagnostics, and Meshy 3D asset workflows with secure authentication and credit safeguards.",
+  "author": {
+    "name": "Steele Schauer",
+    "email": "steeleschauer@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "unity",
+    "meshy",
+    "3d",
+    "rigging",
+    "animation",
+    "game-development"
+  ],
+  "skills": "./skills/",
+  "category": "development",
+  "tags": [
+    "unity",
+    "game-development",
+    "technical-art",
+    "3d-generation",
+    "meshy",
+    "animation",
+    "editor-tools"
+  ],
+  "strict": true
+}

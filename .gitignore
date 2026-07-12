@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+Assets/Art/Generated/Meshy/**/Downloads/
+Assets/Art/Generated/Meshy/**/Metadata/private-*
