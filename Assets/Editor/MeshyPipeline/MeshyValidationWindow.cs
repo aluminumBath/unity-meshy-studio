@@ -46,7 +46,7 @@ namespace UnityMeshyStudio.Editor
                 findings.Add($"Animation type: {importer.animationType}");
                 findings.Add($"Global scale: {importer.globalScale}");
                 findings.Add($"Readable: {importer.isReadable}");
-                findings.Add($"Import materials: {importer.importMaterials}");
+                findings.Add($"Material import mode: {importer.materialImportMode}");
                 if (importer.animationType == ModelImporterAnimationType.Human)
                     findings.Add("Humanoid selected: open Rig configuration and verify every required bone and the avatar pose.");
                 else

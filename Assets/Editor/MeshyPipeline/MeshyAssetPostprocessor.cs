@@ -14,10 +14,9 @@ namespace UnityMeshyStudio.Editor
                 return;
 
             var importer = (ModelImporter)assetImporter;
-            importer.importMaterials = true;
+            importer.materialImportMode = ModelImporterMaterialImportMode.ImportStandard;
             importer.isReadable = false;
-            importer.optimizeMeshPolygons = true;
-            importer.optimizeMeshVertices = true;
+            importer.meshOptimizationFlags = MeshOptimizationFlags.Everything;
             importer.importAnimation = true;
             importer.animationType = ModelImporterAnimationType.Generic;
             importer.avatarSetup = ModelImporterAvatarSetup.NoAvatar;

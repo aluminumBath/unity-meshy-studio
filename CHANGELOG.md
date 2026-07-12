@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.2 — 2026-07-12
+
+- Fixed editor-script compile errors on Unity 6: replaced the removed
+  `ModelImporter.importMaterials` with `materialImportMode` and the deprecated
+  `optimizeMeshPolygons`/`optimizeMeshVertices` with `meshOptimizationFlags`.
+- Verified end-to-end in a clean Unity 6000.0.77f1 project: Meshy FBX import,
+  material and missing-script checks, prefab creation, and health scan.
+
 ## 1.1.1 — 2026-07-12
 
 - Added the `.claude-plugin/marketplace.json` manifest so the repository can
