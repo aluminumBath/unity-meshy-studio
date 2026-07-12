@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.3 — 2026-07-12
+
+- Downloads are now named after the output directory (for example
+  `StoneGolem.glb`) instead of the format key (`glb.glb`).
+- The task thumbnail is downloaded alongside the model files and skipped
+  gracefully if unavailable.
+
 ## 1.1.2 — 2026-07-12
 
 - Fixed editor-script compile errors on Unity 6: replaced the removed

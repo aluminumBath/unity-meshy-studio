@@ -96,32 +96,57 @@ class MeshyClient:
             time.sleep(10)
         raise TimeoutError(f"Task did not finish within {timeout_seconds} seconds.")
 
+def url_suffix(url: str, fallback: str) -> str:
+    return Path(urlparse(url).path).suffix or fallback
+
 def download_urls(data: dict, output: Path) -> list[Path]:
     output.mkdir(parents=True, exist_ok=True)
-    candidates: list[tuple[str, str]] = []
+    asset_name = output.resolve().name or "model"
+    # (filename, url, required) — optional files are skipped on fetch errors.
+    candidates: list[tuple[str, str, bool]] = []
     model_urls = data.get("model_urls") or {}
     if isinstance(model_urls, dict):
-        candidates.extend((name, url) for name, url in model_urls.items() if isinstance(url, str))
+        for label, url in model_urls.items():
+            if isinstance(url, str):
+                candidates.append((f"{asset_name}{url_suffix(url, f'.{label}')}", url, True))
     for i, entry in enumerate(data.get("texture_urls") or []):
         if isinstance(entry, str):
-            candidates.append((f"texture_{i}", entry))
+            candidates.append((f"{asset_name}_texture_{i}{url_suffix(entry, '.bin')}", entry, True))
         elif isinstance(entry, dict):
             candidates.extend(
-                (f"{name}_{i}", url)
+                (f"{asset_name}_{name}_{i}{url_suffix(url, '.bin')}", url, True)
                 for name, url in entry.items()
                 if isinstance(url, str)
             )
+    # thumbnail_url is signed like model_urls; usable here, but the signature
+    # is stripped by sanitize_metadata before URLs are ever printed or saved.
+    thumbnail_url = data.get("thumbnail_url")
+    if isinstance(thumbnail_url, str) and thumbnail_url:
+        candidates.append(
+            (f"{asset_name}_thumbnail{url_suffix(thumbnail_url, '.png')}", thumbnail_url, False)
+        )
 
     saved: list[Path] = []
-    for label, url in candidates:
-        suffix = Path(urlparse(url).path).suffix or ".bin"
-        target = output / f"{label}{suffix}"
-        with requests.get(url, stream=True, timeout=120) as response:
-            response.raise_for_status()
-            with target.open("wb") as handle:
-                for chunk in response.iter_content(1024 * 1024):
-                    if chunk:
-                        handle.write(chunk)
+    used: set[str] = set()
+    for filename, url, required in candidates:
+        if filename in used:
+            stem = Path(filename).stem
+            suffix = Path(filename).suffix
+            filename = f"{stem}_{len(used)}{suffix}"
+        used.add(filename)
+        target = output / filename
+        try:
+            with requests.get(url, stream=True, timeout=120) as response:
+                response.raise_for_status()
+                with target.open("wb") as handle:
+                    for chunk in response.iter_content(1024 * 1024):
+                        if chunk:
+                            handle.write(chunk)
+        except requests.RequestException as error:
+            if required:
+                raise
+            print(f"Skipping optional download {filename}: {error}")
+            continue
         saved.append(target)
     return saved
 
