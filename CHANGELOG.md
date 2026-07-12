@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.4 — 2026-07-12
+
+- Rewrote the README around the marketplace install, with a real example run
+  (credits, timing, output files), the stone golem preview image, and a
+  troubleshooting section.
+- Tightened the plugin and marketplace descriptions and CONTRIBUTING.
+
 ## 1.1.3 — 2026-07-12
 
 - Downloads are now named after the output directory (for example
