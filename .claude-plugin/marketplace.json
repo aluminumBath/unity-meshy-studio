@@ -1,0 +1,45 @@
+{
+  "name": "unity-meshy-studio",
+  "owner": {
+    "name": "Steele Schauer",
+    "email": "steeleschauer@gmail.com"
+  },
+  "metadata": {
+    "description": "Marketplace for the Unity Meshy Studio plugin: production-oriented Unity engineering and Meshy 3D asset workflows.",
+    "version": "1.1.1"
+  },
+  "plugins": [
+    {
+      "name": "unity-meshy-studio",
+      "source": "./",
+      "description": "Production-oriented Unity engineering, visual polish, diagnostics, and Meshy 3D asset workflows with secure authentication and credit safeguards.",
+      "version": "1.1.1",
+      "author": {
+        "name": "Steele Schauer",
+        "email": "steeleschauer@gmail.com"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/aluminumBath/unity-meshy-studio",
+      "repository": "https://github.com/aluminumBath/unity-meshy-studio",
+      "category": "development",
+      "tags": [
+        "unity",
+        "game-development",
+        "technical-art",
+        "3d-generation",
+        "meshy",
+        "animation",
+        "editor-tools"
+      ],
+      "keywords": [
+        "unity",
+        "meshy",
+        "3d",
+        "rigging",
+        "animation",
+        "game-development"
+      ],
+      "strict": true
+    }
+  ]
+}

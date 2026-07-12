@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 — 2026-07-12
+
+- Added the `.claude-plugin/marketplace.json` manifest so the repository can
+  be added directly as a Claude Code plugin marketplace.
+- Removed a stray embedded `repo/` directory left over from the layout fix.
+
 ## 1.1.0 — 2026-07-12
 
 - Split the plugin into 13 focused skills.
